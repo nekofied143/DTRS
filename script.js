@@ -89,6 +89,15 @@ function getExpectedMinutesForDay(day) {
   return null;
 }
 
+function getDefaultDayType(day) {
+  const [year, month] = reportMonth.value.split('-').map(Number);
+  if (!year || !month) return 'normal';
+  const date = new Date(year, month - 1, day);
+  if (date.getDay() === 6) return 'saturday';
+  if (date.getDay() === 0) return 'sunday';
+  return 'normal';
+}
+
 function createRow(day) {
   const row = document.createElement('tr');
   row.innerHTML = `
@@ -108,6 +117,10 @@ function createRow(day) {
     <td><input class="table-input" data-field="hours" readonly /></td>
     <td><input class="table-input" data-field="minutes" readonly /></td>
   `;
+
+  const defaultDayType = getDefaultDayType(day);
+  const dayTypeSelect = row.querySelector('[data-field="dayType"]');
+  dayTypeSelect.value = defaultDayType;
 
   const inputs = row.querySelectorAll('[data-field]');
   const updateUnderTime = () => {
@@ -223,6 +236,8 @@ function createRow(day) {
       input.addEventListener('change', updateUnderTime);
     }
   });
+
+  updateUnderTime();
 
   return row;
 }
@@ -400,6 +415,7 @@ function buildRecordPreview() {
   `;
 
   recordPreview.innerHTML = `<div class="records-grid">${sheetHtml.repeat(4)}</div>`;
+  recordPreview.parentElement.classList.add('active');
 }
 
 generateButton.addEventListener('click', buildRecordPreview);
@@ -408,6 +424,7 @@ clearButton.addEventListener('click', () => {
   officialHoursRegularStart.value = '';
   officialHoursSatStart.value = '';
   recordPreview.innerHTML = '';
+  recordPreview.parentElement.classList.remove('active');
   inChargeName.value = '';
   buildTable();
 });
@@ -468,9 +485,9 @@ function exportToExcel() {
   csvContent += '\n\nSummary:\n';
   csvContent += `Employee Name: ${name}\n`;
   csvContent += `Month/Year: ${monthLabel}\n`;
-  csvContent += `Regular Schedule: ${formatScheduleDisplay(officialHoursRegularStart.value) || 'Not set'}\n`;
-  csvContent += `Saturday Schedule: ${formatScheduleDisplay(officialHoursSatStart.value) || 'Not set'}\n`;
-  csvContent += `In Charge: ${document.getElementById('inChargeName').value.trim() || 'Not set'}\n`;
+  csvContent += `Regular Schedule: ${formatScheduleDisplay(officialHoursRegularStart.value) || ''}\n`;
+  csvContent += `Saturday Schedule: ${formatScheduleDisplay(officialHoursSatStart.value) || ''}\n`;
+  csvContent += `In Charge: ${document.getElementById('inChargeName').value.trim() || ''}\n`;
   
   // Create and download the file
   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });

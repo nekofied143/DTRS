@@ -46,6 +46,15 @@ p {
   margin-bottom: 24px;
 }
 
+.preview-section {
+  display: none;
+}
+
+.preview-section.active {
+  display: block;
+}
+
+
 .top-fields {
   display: grid;
   gap: 16px;
@@ -415,13 +424,20 @@ button:hover {
     display: none;
   }
 
+  .preview-section,
+  .record-preview {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
   .records-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
   }
 
   .record-sheet {
-    border: 1px solid #111;
+    border: none;
     padding: 10px;
     font-size: 0.68rem;
   }
