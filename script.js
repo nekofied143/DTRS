@@ -408,6 +408,7 @@ clearButton.addEventListener('click', () => {
   officialHoursRegularStart.value = '';
   officialHoursSatStart.value = '';
   recordPreview.innerHTML = '';
+  inChargeName.value = '';
   buildTable();
 });
 
