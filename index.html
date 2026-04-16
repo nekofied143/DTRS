@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Time Record System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <h1>Daily Time Record System</h1>
+      <p>Fill the form, then generate your daily time record sheet.</p>
+    </header>
+
+    <section class="form-section">
+      <div class="top-fields">
+        <label>
+          Name:
+          <input id="employeeName" type="text" placeholder="Employee name" />
+        </label>
+        <label>
+          Month / Year:
+          <input id="reportMonth" type="month" />
+        </label>
+      </div>
+
+      <div class="top-fields">
+        <label>
+          Official hours for arrival/departure (Regular days):
+          <div class="time-range-picker">
+            <select id="officialHoursRegularStart">
+              <option value="">Select Schedule</option>
+              <option value="08:00-16:00-0">8:00 AM - 4:00 PM (8 hrs, no break)</option>
+              <option value="08:00-17:00-60">8:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
+              <option value="09:00-17:00-60">9:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
+              <option value="07:00-15:00-0">7:00 AM - 3:00 PM (8 hrs, no break)</option>
+              <option value="07:00-16:00-60">7:00 AM - 4:00 PM (8 hrs + 1hr lunch)</option>
+            </select>
+            <span class="lunch-note" id="lunchNoteRegular"></span>
+          </div>
+        </label>
+        <label>
+          Official hours for arrival/departure (Saturdays):
+          <div class="time-range-picker">
+            <select id="officialHoursSatStart">
+              <option value="">Select Schedule</option>
+              <option value="08:00-12:00-0">8:00 AM - 12:00 NN (4 hrs)</option>
+              <option value="08:00-13:00-0">8:00 AM - 1:00 PM (5 hrs)</option>
+              <option value="09:00-12:00-0">9:00 AM - 12:00 NN (3 hrs)</option>
+            </select>
+            <span class="lunch-note" id="lunchNoteSat"></span>
+          </div>
+        </label>
+        <label>
+          In Charge name:
+          <input id="inChargeName" type="text" placeholder="e.g. Juan Dela Cruz" />
+        </label>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="dataEntryTable">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Day</th>
+              <th colspan="2">AM</th>
+              <th colspan="2">PM</th>
+              <th colspan="2">Under Time</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Arrival</th>
+              <th>Departure</th>
+              <th>Arrival</th>
+              <th>Departure</th>
+              <th>Hours</th>
+              <th>Minutes</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button id="generateButton" type="button">Generate Daily Time Record</button>
+        <button id="importButton" type="button">Import from Excel</button>
+        <button id="saveButton" type="button">Export to Excel</button>
+        <button id="clearButton" type="button">Clear All</button>
+        <input type="file" id="fileInput" accept=".csv" style="display: none;" />
+      </div>
+    </section>
+
+    <section class="preview-section">
+      <div class="preview-header">
+        <h2>Generated Daily Time Record</h2>
+        <button id="printButton" type="button">Print</button>
+      </div>
+      <div id="recordPreview" class="record-preview"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
