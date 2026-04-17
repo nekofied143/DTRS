@@ -358,11 +358,7 @@ button:hover {
   font-weight: 700;
 }
 
-.record-sheet tbody tr:nth-child(even) {
-  background: #f8fafc;
-  font-size: 0.52rem;
-}
-
+.record-sheet tbody tr:nth-child(even),
 .record-sheet tbody tr:nth-child(odd) {
   background: #f8fafc;
   font-size: 0.52rem;
@@ -515,26 +511,9 @@ button:hover {
   min-width: 110px;
 }
 
-.record-sheet table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.68rem;
-  table-layout: fixed;
-}
-
-.record-sheet th,
-.record-sheet td {
-  border: 1px solid #111;
-  padding: 4px 5px;
-}
-
 .record-sheet th {
   background: #f3f4f6;
   font-weight: 700;
-}
-
-.record-sheet tbody tr:nth-child(even) {
-  background: #f8fafc;
 }
 
 .record-sheet td {
@@ -681,5 +660,75 @@ button:hover {
   }
   100% {
     box-shadow: none;
+  }
+}
+
+.install-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #2d6cdf;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.install-btn:hover {
+  background: #1f56b3;
+}
+
+.device-notice {
+  margin: 15px auto;
+  max-width: 1000px;
+  background: #fff3cd;
+  border-left: 5px solid #ffcc00;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+
+.notice-content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.notice-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.device-notice strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color:crimson;
+}
+
+.device-notice p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.apk-link {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #2d6cdf;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.apk-link:hover {
+  background: #1f56b3;
+}
+
+@media (min-width: 768px) {
+  .device-notice {
+    display: none;
   }
 }
