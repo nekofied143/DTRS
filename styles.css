@@ -571,3 +571,115 @@ button:hover {
   padding-bottom: 1.5rem;
   text-align: justify;
 }
+
+.app-header {
+  background: linear-gradient(135deg, #060247, #0d3d8a);
+  color: rgb(255, 255, 255);
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #ffffff;
+}
+
+.header-content {
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.header-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1rem;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  text-align: left;
+}
+
+.info-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.info-card p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  color: #ffffff;
+}
+
+/* top alignment */
+.header-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* version tag */
+.version-tag {
+  background: rgba(255,255,255,0.2);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+/* primary button */
+.primary-btn {
+  margin-top: 1rem;
+  background: white;
+  color: #3b82f6;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: #f1f5f9;
+}
+
+/* browser row */
+.browser-support {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.browser {
+  margin-left: 8px;
+}
+
+.form-section.highlight {
+  animation: highlightFade 1s ease;
+}
+
+@keyframes highlightFade {
+  0% {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+  }
+  100% {
+    box-shadow: none;
+  }
+}

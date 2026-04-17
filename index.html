@@ -1,28 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daily Time Record System</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <div class="app-shell">
-    <header>
-      <h1>Daily Time Record System</h1>
-      <p>Fill the form, then generate your daily time record sheet.</p>
-      <p>This is a simple time tracking system for daily time records. No data is stored on any server.</p>
-      <br>
-      <p>Export functionality allows you to save your time records as a CSV file.</p>
-      <p>Import functionality allows you to load time records from a CSV file. The CSV file should have the same format as the exported files.</p>
-      <p>Recommended paper size: Folio (8.5" x 13")</p>
+    <header class="app-header">
+      <div class="header-content">
+
+        <div class="header-top">
+          <h1>Daily Time Record System</h1>
+          <span class="version-tag">Offline Tool</span>
+        </div>
+
+        <p class="subtitle">
+          Easily track, generate, and export your daily time records.
+        </p>
+
+        <button class="primary-btn">Start Filling DTR</button>
+
+        <div class="header-info">
+          <div class="info-card">
+            <h3>📝 How it works</h3>
+            <p>Fill out the form and generate your DTR instantly.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>🔒 Privacy</h3>
+            <p>No data is stored — everything stays on your device.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>📂 Import / Export</h3>
+            <p>Save or load records using CSV files anytime.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>🖨️ Print</h3>
+            <p>Optimized for Folio size (8.5" × 13").</p>
+          </div>
+        </div>
+
+        <!-- Tiny browser icon row -->
+        <div class="browser-support">
+          <span>Best on:</span>
+          <span class="browser">🌐 Chrome</span>
+          <span class="browser">🌐 Edge</span>
+          <span class="browser">🌐 Opera</span>
+        </div>
+
+      </div>
     </header>
 
     <section class="form-section">
       <div class="top-fields">
         <label>
           Name:
-          <input id="employeeName" type="text" placeholder="Employee name"/>
+          <input id="employeeName" type="text" placeholder="Employee name" />
         </label>
         <label>
           Month / Year:
@@ -111,4 +150,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
