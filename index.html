@@ -11,7 +11,6 @@
     <header>
       <h1>Daily Time Record System</h1>
       <p>Fill the form, then generate your daily time record sheet.</p>
-      <!-- Short description -->
       <p>This is a simple time tracking system for daily time records. No data is stored on any server.</p>
       <br>
       <p>Export functionality allows you to save your time records as a CSV file.</p>
@@ -50,9 +49,11 @@
           <div class="time-range-picker">
             <select id="officialHoursSatStart">
               <option value="">Select Schedule</option>
-              <option value="08:00-12:00-0">8:00 AM - 12:00 NN (4 hrs)</option>
-              <option value="08:00-13:00-0">8:00 AM - 1:00 PM (5 hrs)</option>
-              <option value="09:00-12:00-0">9:00 AM - 12:00 NN (3 hrs)</option>
+              <option value="08:00-16:00-0">8:00 AM - 4:00 PM (8 hrs, no break)</option>
+              <option value="08:00-17:00-60">8:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
+              <option value="09:00-17:00-60">9:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
+              <option value="07:00-15:00-0">7:00 AM - 3:00 PM (8 hrs, no break)</option>
+              <option value="07:00-16:00-60">7:00 AM - 4:00 PM (8 hrs + 1hr lunch)</option>
             </select>
             <span class="lunch-note" id="lunchNoteSat"></span>
           </div>
@@ -90,7 +91,7 @@
       </div>
 
       <div class="actions">
-        <button id="generateButton" type="button">Generate Daily Time Record</button>
+        <button id="generateButton" type="button">Generate DTR</button>
         <button id="importButton" type="button">Import from Excel</button>
         <button id="saveButton" type="button">Export to Excel</button>
         <button id="clearButton" type="button">Clear All</button>

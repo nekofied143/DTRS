@@ -18,6 +18,10 @@ body {
   font-size: 0.9rem;
 }
 
+header h1 {
+  text-align: center;
+}
+
 .app-shell {
   width: 100%;
   max-width: 1300px;
@@ -58,7 +62,7 @@ p {
 .top-fields {
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat( auto-fit, minmax(240px, 1fr) );
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   margin-bottom: 18px;
 }
 
@@ -154,7 +158,6 @@ input.table-input {
   text-align: center;
   font-weight: 700;
   color: red;
-  font-size: 0.9rem;
 }
 
 .actions {
@@ -206,16 +209,13 @@ button:hover {
 
 .record-preview {
   min-height: 100px;
-  border: 1px solid #cbd2dd;
-  border-radius: 12px;
-  padding: 18px;
   background: #ffffff;
   overflow-x: auto;
 }
 
 .records-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
   gap: 12px;
 }
 
@@ -236,6 +236,8 @@ button:hover {
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 4px;
+  text-align: left;
+  font-size: 11px;
 }
 
 .record-sheet .form-id {
@@ -246,10 +248,22 @@ button:hover {
 }
 
 .record-sheet .check-box {
-  width: 18px;
-  height: 18px;
-  border: 1px solid #111;
+  position: absolute;
+  left: calc(50% + 100px);
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #111;
   border-radius: 2px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.record-title-row {
+  position: relative;
+  text-align: center;
+  margin-bottom: 4px;
+  padding-top: 25px;
 }
 
 .record-sheet .record-title {
@@ -259,15 +273,20 @@ button:hover {
   margin: 0 0 4px;
   overflow-wrap: anywhere;
   word-break: break-word;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  margin: 0;
 }
 
 .record-sheet .record-name {
   text-align: center;
+  font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 2px;
   letter-spacing: 0.03em;
   overflow-wrap: anywhere;
   word-break: break-word;
+  border-bottom: 1px solid #111;
 }
 
 .record-sheet .record-name-label {
@@ -280,7 +299,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 6px;
+  gap: 3px;
   margin-bottom: 2px;
   font-size: 0.72rem;
   min-width: 0;
@@ -299,7 +318,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   min-width: 110px;
-  border-bottom: 1px solid #111;
   padding-bottom: 1px;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -309,11 +327,14 @@ button:hover {
   font-size: 0.74rem;
   overflow-wrap: anywhere;
   word-break: break-word;
+  text-align: center;
+  border-bottom: 1px solid #111;
 }
 
 .record-sheet .field-note {
   font-size: 0.62rem;
   padding-top: 1px;
+  text-align: center;
 }
 
 .record-sheet table {
@@ -339,12 +360,12 @@ button:hover {
 
 .record-sheet tbody tr:nth-child(even) {
   background: #f8fafc;
-  font-size: 0.48rem;
+  font-size: 0.52rem;
 }
 
 .record-sheet tbody tr:nth-child(odd) {
   background: #f8fafc;
-  font-size: 0.48rem;
+  font-size: 0.52rem;
 }
 
 .record-sheet td {
@@ -387,39 +408,56 @@ button:hover {
 }
 
 .record-sheet .signature-section {
-  display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
+  margin-top: 1rem;
 }
 
 .record-sheet .signature-block {
-  flex: 1 1 120px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .record-sheet .signature-line {
+  width: 100%;
   border-bottom: 1px solid #111;
-  height: 14px;
+  margin-bottom: 4px;
 }
 
 .record-sheet .signature-text {
   font-size: 0.68rem;
+  text-align: center;
+  padding-bottom: 1.8rem;
+  padding-top: 0px;
 }
 
 .record-sheet .in-charge {
   text-align: center;
-  margin-top: 4px;
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
+  padding: 1px;
 }
 
 @media print {
+
+  body,
+  .app-shell,
+  .record-preview,
+  .form-section,
+  .actions,
+  .preview-header {
+    box-shadow: none;
+    border: none;
+  }
+
+  body {
+    padding: 0;
+  }
+
   header,
   .form-section,
+  .actions,
   .preview-header {
     display: none;
   }
@@ -429,25 +467,20 @@ button:hover {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
+    padding: 0;
   }
 
   .records-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
   }
 
   .record-sheet {
-    border: none;
-    padding: 10px;
-    font-size: 0.68rem;
+    border: 1px solid #000;
+    padding: 8px;
+    font-size: 0.65rem;
+    page-break-inside: avoid;
   }
-}
-
-.record-sheet .record-title {
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0 0 4px;
 }
 
 .record-sheet .field-line {
@@ -535,66 +568,5 @@ button:hover {
   margin-top: 8px;
   font-size: 0.65rem;
   line-height: 1.2;
-}
-
-.record-sheet .signature-section {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.record-sheet .signature-block {
-  flex: 1 1 130px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.record-sheet .signature-line {
-  border-bottom: 1px solid #111;
-  height: 16px;
-}
-
-.record-sheet .in-charge {
-  text-align: right;
-  margin-top: 8px;
-  font-weight: 700;
-  font-size: 0.75rem;
-}
-
-@media print {
-  .records-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  .record-sheet {
-    border: 1px solid #111;
-    padding: 10px;
-    font-size: 0.7rem;
-  }
-}
-
-@media print {
-  body,
-  .app-shell,
-  .record-preview,
-  .form-section,
-  .actions,
-  .preview-header {
-    box-shadow: none;
-    border: none;
-  }
-
-  .form-section,
-  .actions,
-  .preview-header {
-    display: none;
-  }
-
-  body {
-    padding: 0;
-  }
+  padding-bottom: 1rem;
 }
