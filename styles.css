@@ -624,7 +624,7 @@ button:hover {
 
 /* version tag */
 .version-tag {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.2);
   padding: 3px 8px;
   border-radius: 6px;
   font-size: 0.75rem;
@@ -665,18 +665,77 @@ button:hover {
   0% {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
   }
-
   100% {
     box-shadow: none;
   }
 }
 
-.dtr-page {
-  display: block;
-  page-break-inside: avoid;
+.install-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #2d6cdf;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s ease;
 }
 
-.dtr-page+.dtr-page {
-  break-before: page;
-  page-break-before: always;
+.install-btn:hover {
+  background: #1f56b3;
+}
+
+.device-notice {
+  margin: 15px auto;
+  max-width: 1000px;
+  background: #fff3cd;
+  border-left: 5px solid #ffcc00;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+
+.notice-content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.notice-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.device-notice strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color:crimson;
+}
+
+.device-notice p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.apk-link {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #2d6cdf;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.apk-link:hover {
+  background: #1f56b3;
+}
+
+@media (min-width: 768px) {
+  .device-notice {
+    display: none;
+  }
 }
