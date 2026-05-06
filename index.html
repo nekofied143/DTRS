@@ -22,7 +22,10 @@
           Easily track, generate, and export your daily time records.
         </p>
 
-        <button class="primary-btn">Start Filling DTR</button>
+        <div class="header-actions">
+          <button class="primary-btn">Start Filling DTR</button>
+          <button id="openInstructionsModal" class="primary-btn secondary">How to Use</button>
+        </div>
 
         <div class="device-notice">
           <div class="notice-content">
@@ -76,6 +79,23 @@
       </div>
     </header>
 
+    <!-- Instructions Modal -->
+    <div id="instructionsModal" class="modal">
+      <div class="modal-content">
+        <span id="closeInstructionsModal" class="close" hidden>&times;</span>
+        <h3>How to Use the DTR Tool</h3>
+        <ol>
+          <li>Fill in your <strong>Name</strong>, <strong>Month / Year</strong>, and <strong>In Charge name</strong>.</li>
+          <li>Click <strong>Add Schedule</strong> to choose dates and a schedule template.</li>
+          <li>Enter your AM/PM times, and use <strong>Next Day Out</strong> for overnight completion.</li>
+          <li>Click <strong>Generate DTR</strong> to preview the record.</li>
+          <li>Use <strong>Export to Excel</strong> to save a CSV copy, or <strong>Print</strong> for a formatted report.</li>
+          <li>Use <strong>Import from Excel</strong> to reload saved records.</li>
+        </ol>
+        <p>Only scheduled working days allow time entry. Non-working days are automatically disabled.</p>
+      </div>
+    </div>
+
     <section class="form-section">
       <div class="top-fields">
         <label>
@@ -86,41 +106,17 @@
           Month / Year:
           <input id="reportMonth" type="month" />
         </label>
-      </div>
-
-      <div class="top-fields">
-        <label>
-          Official hours for arrival/departure (Regular days):
-          <div class="time-range-picker">
-            <select id="officialHoursRegularStart">
-              <option value="">Select Schedule</option>
-              <option value="08:00-16:00-0">8:00 AM - 4:00 PM (8 hrs, no break)</option>
-              <option value="08:00-17:00-60">8:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
-              <option value="09:00-17:00-60">9:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
-              <option value="07:00-15:00-0">7:00 AM - 3:00 PM (8 hrs, no break)</option>
-              <option value="07:00-16:00-60">7:00 AM - 4:00 PM (8 hrs + 1hr lunch)</option>
-            </select>
-            <span class="lunch-note" id="lunchNoteRegular"></span>
-          </div>
-        </label>
-        <label>
-          Official hours for arrival/departure (Saturdays):
-          <div class="time-range-picker">
-            <select id="officialHoursSatStart">
-              <option value="">Select Schedule</option>
-              <option value="08:00-16:00-0">8:00 AM - 4:00 PM (8 hrs, no break)</option>
-              <option value="08:00-17:00-60">8:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
-              <option value="09:00-17:00-60">9:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
-              <option value="07:00-15:00-0">7:00 AM - 3:00 PM (8 hrs, no break)</option>
-              <option value="07:00-16:00-60">7:00 AM - 4:00 PM (8 hrs + 1hr lunch)</option>
-            </select>
-            <span class="lunch-note" id="lunchNoteSat"></span>
-          </div>
-        </label>
         <label>
           In Charge name:
           <input id="inChargeName" type="text" placeholder="e.g. Juan Dela Cruz" />
         </label>
+      </div>
+
+      <div class="schedule-management">
+        <h3>Schedule Management</h3>
+        <div class="schedule-actions">
+          <button id="openScheduleModal">Add Schedule</button>
+        </div>
       </div>
 
       <div class="table-wrapper">
@@ -131,6 +127,7 @@
               <th>Day</th>
               <th colspan="2">AM</th>
               <th colspan="2">PM</th>
+              <th>Next Day Out</th>
               <th colspan="2">Under Time</th>
             </tr>
             <tr>
@@ -139,6 +136,7 @@
               <th>Arrival</th>
               <th>Departure</th>
               <th>Arrival</th>
+              <th>Departure</th>
               <th>Departure</th>
               <th>Hours</th>
               <th>Minutes</th>
@@ -166,6 +164,74 @@
       <div id="recordPreview" class="record-preview"></div>
     </section>
   </div>
+
+  <!-- Schedule Modal -->
+  <div id="scheduleModal" class="modal">
+    <div class="modal-content">
+      <div id="scheduleErrorPanel" class="error-panel" style="display:none;"></div>
+      <span class="close" hidden>&times;</span>
+      <h3>Select Dates for Schedule</h3>
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <button hidden id="prevMonth">&lt;</button>
+          <span id="calendarMonthYear"></span>
+          <button hidden id="nextMonth">&gt;</button>
+        </div>
+        <div class="calendar-grid">
+          <div class="day-header">Sun</div>
+          <div class="day-header">Mon</div>
+          <div class="day-header">Tue</div>
+          <div class="day-header">Wed</div>
+          <div class="day-header">Thu</div>
+          <div class="day-header">Fri</div>
+          <div class="day-header">Sat</div>
+          <div id="calendarDays" class="calendar-days"></div>
+        </div>
+      </div>
+      <div class="schedule-selector">
+        <label>Schedule Template:
+          <select id="modalScheduleTemplate">
+            <option value="">Select Schedule</option>
+            <option value="08:00-16:00-0">8:00 AM - 4:00 PM (8 hrs, no break)</option>
+            <option value="08:00-17:00-60">8:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
+            <option value="09:00-17:00-60">9:00 AM - 5:00 PM (8 hrs + 1hr lunch)</option>
+            <option value="07:00-15:00-0">7:00 AM - 3:00 PM (8 hrs, no break)</option>
+            <option value="07:00-16:00-60">7:00 AM - 4:00 PM (8 hrs + 1hr lunch)</option>
+            <option value="06:00-14:00-0">6:00 AM - 2:00 PM (8 hrs, no break)</option>
+            <option value="14:00-22:00-0">2:00 PM - 10:00 PM (8 hrs, no break)</option>
+            <option value="22:00-06:00-0">10:00 PM - 6:00 AM (8 hrs, no break)</option>
+            <option value="08:00-18:00-0">8:00 AM - 6:00 PM (10 hrs, no break)</option>
+            <option value="09:00-19:00-0">9:00 AM - 7:00 PM (10 hrs, no break)</option>
+            <option value="12:00-22:00-0">12:00 PM - 10:00 PM (10 hrs, no break)</option>
+            <option value="06:00-16:00-0">6:00 AM - 4:00 PM (10 hrs, no break)</option>
+            <option value="14:00-00:00-0">2:00 PM - 12:00 AM (10 hrs, no break)</option>
+            <option value="22:00-08:00-0">10:00 PM - 8:00 AM (10 hrs, no break)</option>
+            <option value="06:00-18:00-0">6:00 AM - 6:00 PM (12 hrs, no break)</option>
+            <option value="18:00-06:00-0">6:00 PM - 6:00 AM (12 hrs, no break)</option>
+          </select>
+        </label>
+      </div>
+      <div class="modal-actions">
+        <button id="applySchedule">Apply Schedule</button>
+        <button id="cancelSchedule">Cancel</button>
+      </div>
+      <br>
+      <div class="schedule-list">
+        <table id="scheduleTable">
+          <thead>
+            <tr>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Schedule</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div id="toastContainer" class="toast-container"></div>
 
   <script src="script.js"></script>
 </body>
