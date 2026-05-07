@@ -160,12 +160,6 @@ input.table-input {
   color: red;
 }
 
-.actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
 button {
   border: none;
   border-radius: 10px;
@@ -266,7 +260,7 @@ button:hover {
 
 .actions {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
   margin-top: 20px;
 }
@@ -445,8 +439,6 @@ button:hover {
   text-align: center;
   font-weight: 700;
 }
-
-
 
 .record-sheet .signature-section {
   justify-content: space-between;
@@ -1033,6 +1025,9 @@ button:hover {
 }
 
 .toast-container {
+  text-align: center;
+  align-items: center;
+  align-self: center;
   position: fixed;
   bottom: 20px;
   right: 20px;
