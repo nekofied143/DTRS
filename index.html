@@ -85,11 +85,13 @@
         <span id="closeInstructionsModal" class="close" hidden>&times;</span>
         <h3>How to Use the DTR Tool</h3>
         <ol>
-          <li>Fill in your <strong>Name</strong>, <strong>Month / Year</strong>, and <strong>In Charge name</strong>.</li>
+          <li>Fill in your <strong>Name</strong>, <strong>Month / Year</strong>, and <strong>In Charge name</strong>.
+          </li>
           <li>Click <strong>Add Schedule</strong> to choose dates and a schedule template.</li>
           <li>Enter your AM/PM times, and use <strong>Next Day Out</strong> for overnight completion.</li>
           <li>Click <strong>Generate DTR</strong> to preview the record.</li>
-          <li>Use <strong>Export to Excel</strong> to save a CSV copy, or <strong>Print</strong> for a formatted report.</li>
+          <li>Use <strong>Export to Excel</strong> to save a CSV copy, or <strong>Print</strong> for a formatted report.
+          </li>
           <li>Use <strong>Import from Excel</strong> to reload saved records.</li>
         </ol>
         <p>Only scheduled working days allow time entry. Non-working days are automatically disabled.</p>
@@ -119,32 +121,34 @@
         </div>
       </div>
 
-      <div class="table-wrapper">
-        <table id="dataEntryTable">
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Day</th>
-              <th colspan="2">AM</th>
-              <th colspan="2">PM</th>
-              <th>Next Day Out</th>
-              <th colspan="2">Under Time</th>
-            </tr>
-            <tr>
-              <th></th>
-              <th></th>
-              <th>Arrival</th>
-              <th>Departure</th>
-              <th>Arrival</th>
-              <th>Departure</th>
-              <th>Departure</th>
-              <th>Hours</th>
-              <th>Minutes</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
+      <div class="data-entry-section">
+        <div class="table-wrapper">
+          <table id="dataEntryTable">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Day</th>
+                <th colspan="2">AM</th>
+                <th colspan="2">PM</th>
+                <th>Next Day Out</th>
+                <th colspan="2">Under Time</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Arrival</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Departure</th>
+                <th>Departure</th>
+                <th>Hours</th>
+                <th>Minutes</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="actions">
@@ -152,7 +156,7 @@
         <button id="importButton" type="button">Import from Excel</button>
         <button id="saveButton" type="button">Export to Excel</button>
         <button id="clearButton" type="button">Clear All</button>
-        <input type="file" id="fileInput" accept=".csv,text/csv,application/csv,application/vnd.ms-excel" style="display: none;" />
+        <input type="file" id="fileInput" accept=".csv,text/csv" style="display: none;" />
       </div>
     </section>
 
