@@ -24,7 +24,6 @@ This system is intended for **small to medium organizations** that rely on sprea
 ### 📥 CSV Import System
 - Upload attendance records via CSV
 - Automatic parsing and validation
-- Supports bulk employee processing
 
 ### 🧮 Smart Time Computation
 - Automatic total hours calculation
