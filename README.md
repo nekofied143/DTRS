@@ -86,7 +86,3 @@ This system is intended for **small to medium organizations** that rely on sprea
 **nekofied143**
 
 ---
-
-## 📄 License
-
-This project is intended for **educational and internal use**. You may modify and adapt it as needed.
