@@ -4,13 +4,6 @@
 
 ---
 
-## 🚀 Live Demo
-
-🌐 https://dtrsystem.netlify.app  
-📁 https://github.com/nekofied143/DTRS  
-
----
-
 ## 📌 Overview
 
 DTRS is a frontend-based attendance and time computation system designed to streamline employee record management. It processes CSV-based DTR data and automatically calculates working hours, undertime, and overtime based on configurable shift rules.
